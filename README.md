@@ -1,2 +1,3 @@
 # AdventOfCode
-Solutions to the AdventOfCode programming exercises
+Solutions to the AdventOfCode programming exercises.
+The exercises can be found here: https://adventofcode.com/
