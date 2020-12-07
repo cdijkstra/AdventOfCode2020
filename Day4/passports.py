@@ -15,8 +15,7 @@ passports.append(tmp_passport)
 count = 0
 required = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"]
 for passport in passports:
-    print("Start" + str1 + " End")
-    # if all(reqs in passport for reqs in required):
-    #     count += 1
+    if all(reqs in passport for reqs in required):
+        count += 1
     
 print(count)
