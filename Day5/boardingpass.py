@@ -25,12 +25,10 @@ def findColumn(ch, index, min, max):
 def seatId(row, column):
     return row * 8 + column
 
-maxfoundid = 0
+ids = []
 for bp in bps:
     row = findRow(bp[:7], 0, 0, 127)
     column = findColumn(bp[-3:], 0, 0, 7)
-    id = seatId(row, column)
-    if (id > maxfoundid):
-        maxfoundid = id
+    ids.append(seatId(row, column))
 
-print(maxfoundid)
+print(max(ids))
