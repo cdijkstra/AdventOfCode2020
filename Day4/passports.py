@@ -27,6 +27,7 @@ for passport in passports:
         ) and
         re.match("#[\da-f]{6}", passport["hcl"]) and
         passport["ecl"] in ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"] and
+        # re.match("\d{9}", passport["pid"])
         len(passport["pid"]) == 9 and passport["pid"].isnumeric()
     ):
         count += 1
