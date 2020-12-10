@@ -1,10 +1,21 @@
-allbags = {}
 def initializebags(filename):
     rules = [line.rstrip() for line in open(filename)]
+    allbags = {}
     for rule in rules:
         bag = '-'.join(rule.split()[0:2])
         contains = rule.split('contain')[1].split(',')
         allbags[bag] = contains
+    return allbags
+
+def countallgoldsbags():
+    global goldbagcount
+    totalgoldbagcount = 0
+    for bag in allbags:
+        goldbagcount = 0
+        countgoldbags(bag)
+        if goldbagcount > 0:
+            totalgoldbagcount += 1
+    return totalgoldbagcount
 
 def countgoldbags(bag):
     global goldbagcount
@@ -24,16 +35,6 @@ def countbagswithinbag(bag, bagcount):
             bagcount += int(num) * countbagswithinbag(innerbag, 1)
     return bagcount
 
-
-initializebags('rules.txt')
-
-goldbagcount = 0
-totalgoldbagcount = 0
-for bag in allbags:
-    goldbagcount = 0
-    countgoldbags(bag)
-    if goldbagcount > 0:
-        totalgoldbagcount += 1
-
-print("Total shiny gold bags: " + str(totalgoldbagcount))
+allbags = initializebags('rules.txt')
+print("Total shiny gold bags: " + str(countallgoldsbags()))
 print("Bags within shiny gold bag: " + str(countbagswithinbag('shiny-gold', 0)))
