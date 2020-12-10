@@ -8,8 +8,6 @@ def findRow(ch, index, min, max):
             return findRow(ch, index + 1, min, math.floor((min + max) / 2))
         else:
             return findRow(ch, index + 1, math.ceil((min + max) / 2), max)
-    if (min != max):
-        print("WARNING")
     return max
 
 def findColumn(ch, index, min, max):
@@ -18,8 +16,6 @@ def findColumn(ch, index, min, max):
             return findColumn(ch, index + 1, min, math.floor((min + max) / 2))
         else:
             return findColumn(ch, index + 1, math.ceil((min + max) / 2), max)
-    if (min != max):
-        print("WARNING")
     return max
 
 def seatId(row, column):
