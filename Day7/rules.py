@@ -12,11 +12,17 @@ def countgoldbags(bag):
         num = outercontain.split()[0]
         if num != 'no':
             innercontain = '-'.join(outercontain.split()[1:3])
+            countgoldbags(innercontain)
             if innercontain == 'shiny-gold':
                 goldbagcount += 1
-            countgoldbags(innercontain)
-        else: # No inner bags
-            exit
+
+def countbagswithinbag(bag, bagcount):
+    for outercontain in allbags[bag]:
+        num = outercontain.split()[0]
+        if num != 'no':
+            innerbag = '-'.join(outercontain.split()[1:3])
+            bagcount += int(num) * countbagswithinbag(innerbag, 1)
+    return bagcount
 
 goldbagcount = 0
 totalgoldbagcount = 0
@@ -27,3 +33,4 @@ for bag in allbags:
         totalgoldbagcount += 1
         
 print(totalgoldbagcount)
+print(countbagswithinbag('shiny-gold', 0))
